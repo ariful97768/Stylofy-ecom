@@ -31,7 +31,7 @@ export default function Navbar() {
           <span className="text-xs px-5 py-3.5 hover:cursor-default bg-black text-white rounded-[18px]">
             Cart
           </span>
-          <div className="rounded-full relative border-6 p-2 -ml-1">
+          <div className="rounded-full relative border-black border-6 p-2 -ml-1">
             <CgShoppingBag size={16} />
             {/* <div className="absolute -top-1 -right-5 p-px  bg-[#f2f2f2f2] text-xs rounded-full">
               <div className="flex items-center w-3.5 h-3.5 justify-center shrink-0">1</div>

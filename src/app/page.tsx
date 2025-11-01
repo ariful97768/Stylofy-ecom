@@ -49,10 +49,10 @@ export default function Home() {
                 <BsArrowUpRight className="rotate-45" size={24} />
               </div>
               <div className="flex gap-3 items-center">
-                <span className="rotate-180 text-gray-500 border">
+                <span className="rotate-180 text-gray-500 border-gray-400 border-2">
                   <RiArrowRightSLine size={34} />
                 </span>
-                <span className="border">
+                <span className="border-gray-400 border-2 text-black/80">
                   <RiArrowRightSLine size={34} />
                 </span>
               </div>
@@ -64,6 +64,85 @@ export default function Home() {
             </div>
             <div className="relative border border-gray-400 w-[366px] h-[376px]">
               <Image src={img} fill className="object-cover" alt="product" />
+            </div>
+          </div>
+        </section>
+        <section className="mt-37 space-y-6">
+          <div className="relative max-w-max">
+            <h1 className="text-5xl tracking-wider mb-2 font-black leading-10">
+              NEW <br /> THIS WEEK
+            </h1>
+            <span className="tracking-wider absolute top-5 font-bold -right-9">
+              (50)
+            </span>
+          </div>
+          <div className="w-full flex gap-6 relative">
+            <span className="absolute right-0 -top-10">See All</span>
+            <div id="product-card" className="max-w-max">
+              <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                <Image src={img} fill className="object-cover" alt="product" />
+              </div>
+              <div className="pt-3.5">
+                <span className="text-black/60 text-xs font-medium">
+                  V-Neck T-Shirt
+                </span>
+                <div className="flex items-center justify-between">
+                  <h2>Embroidered Seersucker Shirt</h2>
+                  <span>$99</span>
+                </div>
+              </div>
+            </div>
+            <div id="product-card" className="max-w-max">
+              <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                <Image src={img} fill className="object-cover" alt="product" />
+              </div>
+              <div className="pt-3.5">
+                <span className="text-black/60 text-xs font-medium">
+                  V-Neck T-Shirt
+                </span>
+                <div className="flex items-center justify-between">
+                  <h2>Embroidered Seersucker Shirt</h2>
+                  <span>$99</span>
+                </div>
+              </div>
+            </div>
+            <div id="product-card" className="max-w-max">
+              <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                <Image src={img} fill className="object-cover" alt="product" />
+              </div>
+              <div className="pt-3.5">
+                <span className="text-black/60 text-xs font-medium">
+                  V-Neck T-Shirt
+                </span>
+                <div className="flex items-center justify-between">
+                  <h2>Embroidered Seersucker Shirt</h2>
+                  <span>$99</span>
+                </div>
+              </div>
+            </div>
+            <div id="product-card" className="max-w-max">
+              <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                <Image src={img} fill className="object-cover" alt="product" />
+              </div>
+              <div className="pt-3.5">
+                <span className="text-black/60 text-xs font-medium">
+                  V-Neck T-Shirt
+                </span>
+                <div className="flex items-center justify-between">
+                  <h2>Embroidered Seersucker Shirt</h2>
+                  <span>$99</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="max-w-max mx-auto flex gap-3 items-center">
+              <span className="rotate-180 text-gray-500 border-gray-400 border-2">
+                <RiArrowRightSLine size={34} />
+              </span>
+              <span className="border-gray-400 border-2 text-black/80">
+                <RiArrowRightSLine size={34} />
+              </span>
             </div>
           </div>
         </section>

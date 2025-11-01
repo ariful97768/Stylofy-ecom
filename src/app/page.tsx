@@ -4,6 +4,13 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Image from "next/image";
 import img from "@/assets/feature-product.png";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   return (
@@ -76,7 +83,7 @@ export default function Home() {
               (50)
             </span>
           </div>
-          <div className="w-full flex gap-6 relative">
+          {/* <div className="w-full flex gap-6 relative">
             <span className="absolute right-0 -top-10">See All</span>
             <div id="product-card" className="max-w-max">
               <div className="relative border border-gray-400 w-[301px] h-[308px]">
@@ -134,8 +141,143 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-          <div>
+          </div> */}
+          <Carousel>
+            <span className="absolute right-0 -top-10">See All</span>
+            <CarouselContent>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+              <CarouselItem className="basis-1/4">
+                <div id="product-card" className="max-w-max">
+                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
+                    <Image
+                      src={img}
+                      fill
+                      className="object-cover"
+                      alt="product"
+                    />
+                  </div>
+                  <div className="pt-3.5">
+                    <span className="text-black/60 text-xs font-medium">
+                      V-Neck T-Shirt
+                    </span>
+                    <div className="flex items-center justify-between">
+                      <h2>Embroidered Seersucker Shirt</h2>
+                      <span>$99</span>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="max-w-max mx-auto mt-6 flex gap-3 items-center">
+              <CarouselPrevious className="  text-gray-500 border-gray-400 border-2" />
+              <CarouselNext className="  text-gray-500 border-gray-400 border-2" />
+            </div>
+          </Carousel>
+          {/* <div>
             <div className="max-w-max mx-auto flex gap-3 items-center">
               <span className="rotate-180 text-gray-500 border-gray-400 border-2">
                 <RiArrowRightSLine size={34} />
@@ -144,7 +286,7 @@ export default function Home() {
                 <RiArrowRightSLine size={34} />
               </span>
             </div>
-          </div>
+          </div> */}
         </section>
       </main>
     </>

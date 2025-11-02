@@ -1,5 +1,6 @@
 import Image from "next/image";
 import img from "@/assets/feature-product.png";
+import Link from "next/link";
 
 export default function ProductDetails() {
   return (
@@ -95,9 +96,11 @@ export default function ProductDetails() {
               </span>
             </div>
           </div>
-          <button className="py-2.5 min:w-[100px] max-h-max w-full items-center justify-center flex px-15 bg-black/30 rounded-none uppercase text-sm font-semibold shrink-0">
-            Buy Now
-          </button>
+          <Link href={"/checkout/s"}>
+            <button className="py-2.5 min:w-[100px] max-h-max w-full items-center justify-center flex px-15 bg-black/30 rounded-none uppercase text-sm font-semibold shrink-0">
+              Buy Now
+            </button>
+          </Link>
         </div>
       </div>
     </main>

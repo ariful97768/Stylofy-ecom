@@ -10,10 +10,10 @@ export default function Navbar() {
         {/* <GiHamburgerMenu size={20} /> */}
         <ul className="flex gap-8 font-semibold items-center">
           <li>
-            <Link href={"#"}>Home</Link>
+            <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"#"}>Collections</Link>
+            <Link href={"/products"}>Collections</Link>
           </li>
           <li>
             <Link href={"#"}>New</Link>

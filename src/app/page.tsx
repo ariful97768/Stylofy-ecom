@@ -1,5 +1,3 @@
-import Navbar from "../components/navbar";
-import { FiSearch } from "react-icons/fi";
 import { BsArrowUpRight } from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Image from "next/image";
@@ -11,34 +9,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import SearchInput from "@/components/search-input";
+import ProductCard from "@/components/ui/product-card";
 
 export default function Home() {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
       <main className="max-w-7xl mt-14 mx-auto">
         <div>
-          <h2>MEN</h2>
-          <h2>WOMEN</h2>
-          <h2>KIDS</h2>
-          <div className="max-w-[350px] mt-4 max-h-max relative">
-            <FiSearch
-              size={16}
-              className="absolute top-1/2 -translate-y-1/2 left-2"
-            />
-
-            <input
-              type="text"
-              className="border border-none outline-none pl-7 pr-18 w-full py-2 bg-black/30"
-              name="search"
-              id="search"
-            />
-            <span className="absolute top-1/2 hover:cursor-pointer h-full flex items-center justify-center -translate-y-1/2 text-black/70 right-2">
-              search
-            </span>
+          <div className="pb-4">
+            <h2>MEN</h2>
+            <h2>WOMEN</h2>
+            <h2>KIDS</h2>
           </div>
+          <SearchInput />
         </div>
         <section className="mt-23 flex items-center">
           <div className="w-full mr-3 flex flex-col h-[376px]">
@@ -146,130 +130,22 @@ export default function Home() {
             <span className="absolute right-0 -top-10">See All</span>
             <CarouselContent>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
               <CarouselItem className="basis-1/4">
-                <div id="product-card" className="max-w-max">
-                  <div className="relative border border-gray-400 w-[301px] h-[308px]">
-                    <Image
-                      src={img}
-                      fill
-                      className="object-cover"
-                      alt="product"
-                    />
-                  </div>
-                  <div className="pt-3.5">
-                    <span className="text-black/60 text-xs font-medium">
-                      V-Neck T-Shirt
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <h2>Embroidered Seersucker Shirt</h2>
-                      <span>$99</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard img={img} />
               </CarouselItem>
             </CarouselContent>
             <div className="max-w-max mx-auto mt-6 flex gap-3 items-center">

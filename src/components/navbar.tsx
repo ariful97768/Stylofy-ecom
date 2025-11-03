@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CgShoppingBag } from "react-icons/cg";
-import { FaRegHeart, FaRegUser } from "react-icons/fa";
-// import { GiHamburgerMenu } from "react-icons/gi";
+import { FaRegHeart } from "react-icons/fa";
+import NavDropdown from "./nav-dropdown";
 
 export default function Navbar() {
   return (
@@ -38,9 +38,7 @@ export default function Navbar() {
             </div> */}
           </div>
         </div>
-        <span className="p-3.5 bg-black text-white rounded-full">
-          <FaRegUser size={16} />
-        </span>
+        <NavDropdown />
       </div>
     </nav>
   );

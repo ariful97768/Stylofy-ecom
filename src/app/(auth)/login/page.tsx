@@ -30,7 +30,21 @@ export default function LoginPage() {
 
   async function handleLogin() {
     try {
-      await context?.signInWithGoogle();
+      const user = await context?.signInWithGoogle();
+      await (
+        await fetch("http://localhost:5000/sign-token", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user?.user.email,
+          }),
+          credentials: "include",
+        })
+      ).json();
+      console.log(user);
+
       swal.fire({
         text: "Signed in Successfully",
         icon: "success",

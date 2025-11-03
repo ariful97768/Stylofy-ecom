@@ -11,22 +11,33 @@ import {
 import { useContext } from "react";
 import AuthProvider, { AuthContext } from "@/Context/AuthProvider";
 import Swal from "sweetalert2";
+import Link from "next/link";
 
 export function NavMenu() {
   const context = useContext(AuthContext);
 
   async function logout() {
     try {
+      await (
+        await fetch("http://localhost:5000/signout", {
+          method: "GET",
+          credentials: "include",
+        })
+      ).json();
+
       await context?.signOutUser();
       context?.setUser(null);
-
       Swal.fire({
         text: "Signed out successfully",
         icon: "success",
       });
     } catch (error) {
+      const msg =
+        error instanceof Error
+          ? error.message
+          : "Some unknown error happened while singing out user";
       Swal.fire({
-        text: "Some unknown error happened while singing out user",
+        text: msg,
         icon: "error",
       });
     }
@@ -41,11 +52,21 @@ export function NavMenu() {
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Cart</DropdownMenuItem>
-        <DropdownMenuItem>Orders</DropdownMenuItem>
-        <DropdownMenuItem onClick={logout} variant="destructive">
-          Logout
-        </DropdownMenuItem>
+        <Link href={"/cart"}>
+          <DropdownMenuItem>Cart</DropdownMenuItem>
+        </Link>
+        {context?.user ? (
+          <>
+            <DropdownMenuItem>Orders</DropdownMenuItem>
+            <DropdownMenuItem onClick={logout} variant="destructive">
+              Logout
+            </DropdownMenuItem>
+          </>
+        ) : (
+          <Link href={"/login"}>
+            <DropdownMenuItem>Signin</DropdownMenuItem>
+          </Link>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );

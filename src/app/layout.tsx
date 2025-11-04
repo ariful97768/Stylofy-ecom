@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Stylofy",
@@ -20,6 +21,7 @@ export default function RootLayout({
           <Navbar />
         </header>
         {children}
+        <Toaster position="top-center" />
       </body>
     </html>
   );

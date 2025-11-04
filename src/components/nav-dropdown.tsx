@@ -57,7 +57,9 @@ export function NavMenu() {
         </Link>
         {context?.user ? (
           <>
-            <DropdownMenuItem>Orders</DropdownMenuItem>
+            <Link href={"/dashboard/orders"}>
+              <DropdownMenuItem>Orders</DropdownMenuItem>
+            </Link>
             <DropdownMenuItem onClick={logout} variant="destructive">
               Logout
             </DropdownMenuItem>

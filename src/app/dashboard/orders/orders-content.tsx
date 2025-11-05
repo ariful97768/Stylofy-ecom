@@ -24,7 +24,7 @@ export default function Orders() {
     if (!context?.user?.email) return;
     async function fetchData(email: string) {
       try {
-        const res = await fetch(`https://stylofy-ecom-server.vercel.app/get-orders/${email}`, {
+        const res = await fetch(`/api/get-orders/${email}`, {
           method: "GET",
           credentials: "include",
         });
@@ -43,7 +43,7 @@ export default function Orders() {
 
   async function handleCancel(id: string) {
     try {
-      const res = await fetch(`https://stylofy-ecom-server.vercel.app/delete-order/${id}`, {
+      const res = await fetch(`/api/delete-order/${id}`, {
         credentials: "include",
         method: "DELETE",
       });

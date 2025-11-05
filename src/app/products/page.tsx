@@ -22,7 +22,7 @@ export default async function Product() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   const products: Product[] = await (
-    await fetch("https://stylofy-ecom-server.vercel.app/get-all-products", {
+    await fetch("/api/get-all-products", {
       method: "GET",
       credentials: "include",
       headers: {

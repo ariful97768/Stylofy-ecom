@@ -19,7 +19,7 @@ export function NavMenu() {
   async function logout() {
     try {
       await (
-        await fetch("https://stylofy-ecom-server.vercel.app/signout", {
+        await fetch("/api/signout", {
           method: "GET",
           credentials: "include",
         })

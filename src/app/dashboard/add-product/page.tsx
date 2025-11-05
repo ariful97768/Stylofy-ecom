@@ -111,7 +111,7 @@ export default function AddProduct() {
 
       const dataRes = await toast
         .promise(
-          fetch("https://stylofy-ecom-server.vercel.app/add-product", {
+          fetch("/api/add-product", {
             credentials: "include",
             method: "POST",
             headers: {

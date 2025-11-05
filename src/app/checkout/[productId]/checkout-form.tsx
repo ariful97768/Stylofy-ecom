@@ -47,7 +47,7 @@ export default function CheckoutForm({ product }: { product: Product }) {
 
       const res = await toast
         .promise(
-          fetch("http://localhost:5000/confirm-order", {
+          fetch("https://stylofy-ecom-server.vercel.app/confirm-order", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

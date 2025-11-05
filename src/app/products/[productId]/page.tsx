@@ -13,7 +13,7 @@ export default async function ProductDetails({
 
   const id = await params;
   const product: Product = await (
-    await fetch(`http://localhost:5000/get-product/${id.productId}`, {
+    await fetch(`https://stylofy-ecom-server.vercel.app/get-product/${id.productId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

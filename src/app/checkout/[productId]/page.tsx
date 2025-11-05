@@ -12,7 +12,7 @@ export default async function Checkout({
   const token = cookiesStore.get("token")?.value;
 
   const id = (await params).productId;
-  const res = await fetch(`http://localhost:5000/get-product/${id}`, {
+  const res = await fetch(`https://stylofy-ecom-server.vercel.app/get-product/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

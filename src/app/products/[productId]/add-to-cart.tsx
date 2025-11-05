@@ -12,7 +12,7 @@ export default function AddToCart({ id }: { id: string }) {
     setloading(true);
     try {
       await (
-        await fetch("http://localhost:5000/add-to-cart", {
+        await fetch("https://stylofy-ecom-server.vercel.app/add-to-cart", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

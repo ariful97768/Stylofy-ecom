@@ -1,7 +1,6 @@
 import { BsArrowUpRight } from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Image from "next/image";
-import img from "@/assets/feature-product.png";
 import {
   Carousel,
   CarouselContent,
@@ -14,7 +13,7 @@ import ProductCard, { Product } from "@/components/ui/product-card";
 
 export default async function Home() {
   const data: Product[] = await (
-    await fetch("http://localhost:5000/get-homepage-products")
+    await fetch("https://stylofy-ecom-server.vercel.app/get-homepage-products")
   ).json();
 
   return (
@@ -55,10 +54,10 @@ export default async function Home() {
           </div>
           <div className="flex items-center gap-10">
             <div className="relative border border-gray-400 w-[366px] h-[376px]">
-              <Image unoptimized src={data[0].images[0]} fill className="object-cover" alt="product" />
+              <Image unoptimized src={data[0]?.images[0]} fill className="object-cover" alt="product" />
             </div>
             <div className="relative border border-gray-400 w-[366px] h-[376px]">
-              <Image unoptimized src={data[1].images[0]} fill className="object-cover" alt="product" />
+              <Image unoptimized src={data[1]?.images[0]} fill className="object-cover" alt="product" />
             </div>
           </div>
         </section>

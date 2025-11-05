@@ -32,7 +32,7 @@ export default function LoginPage() {
     try {
       const user = await context?.signInWithGoogle();
       await (
-        await fetch("http://localhost:5000/sign-token", {
+        await fetch("https://stylofy-ecom-server.vercel.app/sign-token", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

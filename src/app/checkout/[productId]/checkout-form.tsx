@@ -45,9 +45,9 @@ export default function CheckoutForm({ product }: { product: Product }) {
         },
       };
 
-      const res = await toast
+      await toast
         .promise(
-          fetch("/api/confirm-order", {
+          fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/confirm-order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

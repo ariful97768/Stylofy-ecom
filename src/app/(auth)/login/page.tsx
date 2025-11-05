@@ -32,7 +32,7 @@ export default function LoginPage() {
     try {
       const user = await context?.signInWithGoogle();
       await (
-        await fetch("/api/sign-token", {
+        await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/app/sign-token`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

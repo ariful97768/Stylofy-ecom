@@ -22,7 +22,7 @@ export default async function Product() {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   const products: Product[] = await (
-    await fetch("/api/get-all-products", {
+    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/get-all-products`, {
       method: "GET",
       credentials: "include",
       headers: {

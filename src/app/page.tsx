@@ -13,7 +13,7 @@ import ProductCard, { Product } from "@/components/ui/product-card";
 
 export default async function Home() {
   const data: Product[] = await (
-    await fetch("/api/get-homepage-products")
+    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/get-homepage-products`)
   ).json();
 
   return (

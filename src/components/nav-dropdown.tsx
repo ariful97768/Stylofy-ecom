@@ -19,7 +19,7 @@ export function NavMenu() {
   async function logout() {
     try {
       await (
-        await fetch("/api/signout", {
+        await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/signout`, {
           method: "GET",
           credentials: "include",
         })

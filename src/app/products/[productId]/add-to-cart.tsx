@@ -12,7 +12,7 @@ export default function AddToCart({ id }: { id: string }) {
     setloading(true);
     try {
       await (
-        await fetch("/api/add-to-cart", {
+        await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/add-to-cart`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

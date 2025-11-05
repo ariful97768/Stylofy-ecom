@@ -12,7 +12,7 @@ export default async function Checkout({
   const token = cookiesStore.get("token")?.value;
 
   const id = (await params).productId;
-  const res = await fetch(`/api/get-product/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/get-product/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

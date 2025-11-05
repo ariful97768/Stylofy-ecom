@@ -112,6 +112,7 @@ export default function AddProduct() {
       const dataRes = await toast
         .promise(
           fetch("http://localhost:5000/add-product", {
+            credentials: "include",
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -120,8 +121,12 @@ export default function AddProduct() {
           }),
           {
             loading: "Adding product",
-            success: (data) => "Product added successfully",
-            error: "Failed to add product",
+            success: () => "Product added successfully",
+            error: (a) => {
+              if ((a as string).toString().includes("403"))
+                return "You are not authorized";
+              return `${a}Failed to add product`;
+            },
           }
         )
         .unwrap();

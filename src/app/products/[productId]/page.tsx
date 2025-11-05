@@ -1,8 +1,27 @@
 import Image from "next/image";
-import img from "@/assets/feature-product.png";
-import Link from "next/link";
+import { cookies } from "next/headers";
+import { type Product } from "@/components/ui/product-card";
+import AddToCart from "./add-to-cart";
 
-export default function ProductDetails() {
+export default async function ProductDetails({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
+
+  const id = await params;
+  const product: Product = await (
+    await fetch(`http://localhost:5000/get-product/${id.productId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`,
+      },
+    })
+  ).json();
+  console.log(product);
   return (
     <main className="flex items-center justify-center h-[calc(100vh-150px)]">
       <div className="max-w-7xl flex gap-[100px] justify-center tracking-wider mx-auto mt-14">
@@ -10,68 +29,50 @@ export default function ProductDetails() {
           <div>
             <div className="relative w-[367px] border border-gray-300 h-[428px]">
               <Image
-                src={img}
+                src={product?.images[0]}
+                unoptimized
                 className="object-cover"
                 fill
                 alt="product image"
               />
             </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <div className="relative w-16 h-[76px] border border-gray-300">
-              <Image
-                src={img}
-                className="object-cover"
-                fill
-                alt="product image"
-              />
-            </div>
-            <div className="relative w-16 h-[76px] border border-gray-300">
-              <Image
-                src={img}
-                className="object-cover"
-                fill
-                alt="product image"
-              />
-            </div>
-            <div className="relative w-16 h-[76px] border border-gray-300">
-              <Image
-                src={img}
-                className="object-cover"
-                fill
-                alt="product image"
-              />
-            </div>
-            <div className="relative w-16 h-[76px] border border-gray-300">
-              <Image
-                src={img}
-                className="object-cover"
-                fill
-                alt="product image"
-              />
-            </div>
-            <div className="relative w-16 h-[76px] border border-gray-300">
-              <Image
-                src={img}
-                className="object-cover"
-                fill
-                alt="product image"
-              />
-            </div>
+          <div className="flex flex-col overflow-y-auto h-[428px] gap-3">
+            {product.images.map((img, idx) => (
+              <div
+                key={idx}
+                className="relative w-16 shrink-0 h-[76px] border border-gray-300"
+              >
+                <Image
+                  src={img}
+                  unoptimized
+                  className="object-cover"
+                  fill
+                  alt="product image"
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="border border-gray-300 flex flex-col pt-12 px-10 pb-3">
           <div>
             <h1 className="uppercase pb-1.5 text-sm font-semibold">
-              ABSTRACT PRINT SHIRT
+              {product.name}
             </h1>
-            <span className="text-sm font-semibold">$99</span>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold">
+                Price: ${product.price}
+              </span>
+              <span className="text-sm font-semibold">
+                Discount: %{product.discount}
+              </span>
+            </div>
             <p className="text-xs mt-3 text-black/50 font-semibold">
               MRP incl. of all taxes
             </p>
           </div>
           <p className="font-medium text-xs mt-10 mb-22 max-w-[250px]">
-            Relaxed-fit shirt. Camp collar and short sleeves. Button-up front.
+            {product.description}
           </p>
           <div className="grow">
             <h4 className="mb-2 text-sm">Size</h4>
@@ -96,11 +97,7 @@ export default function ProductDetails() {
               </span>
             </div>
           </div>
-          <Link href={"/checkout/s"}>
-            <button className="py-2.5 min:w-[100px] max-h-max w-full items-center justify-center flex px-15 bg-black/30 rounded-none uppercase text-sm font-semibold shrink-0">
-              Buy Now
-            </button>
-          </Link>
+          <AddToCart id={product._id} />
         </div>
       </div>
     </main>

@@ -1,5 +1,5 @@
+import { cookies } from "next/headers";
 import SearchInput from "@/components/search-input";
-import img from "@/assets/feature-product.png";
 import {
   Accordion,
   AccordionContent,
@@ -16,9 +16,22 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import ProductCard from "@/components/ui/product-card";
+import ProductCard, { type Product } from "@/components/ui/product-card";
 
-export default function Product() {
+export default async function Product() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+  const products: Product[] = await (
+    await fetch("http://localhost:5000/get-all-products", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `token=${token}`, 
+      },
+    })
+  ).json();
+  console.log(products);
   return (
     <main className="max-w-7xl tracking-wider mt-14 gap-10 mx-auto flex">
       <aside className="shrink-0 space-y-6 w-1/5">
@@ -163,18 +176,10 @@ export default function Product() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-10 gap-y-8">
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
-          <ProductCard img={img} />
+        <div className="flex flex-wrap gap-8">
+          {products.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
         </div>
       </section>
     </main>

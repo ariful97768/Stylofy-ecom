@@ -13,7 +13,7 @@ import ProductCard, { Product } from "@/components/ui/product-card";
 
 export default async function Home() {
   const data: Product[] = await (
-    await fetch(`https://stylofy-ecom-server.vercel.app/api/get-homepage-products`)
+    await fetch(`https://stylofy-ecom-server.vercel.app/get-homepage-products`)
   ).json();
 
   return (

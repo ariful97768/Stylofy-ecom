@@ -16,7 +16,7 @@ export default async function Checkout({
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      cookie: `token=${token}`,
+      Cookie: `token=${token}`,
     },
     credentials: "include",
   });

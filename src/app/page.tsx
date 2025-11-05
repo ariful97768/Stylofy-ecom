@@ -10,9 +10,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import SearchInput from "@/components/search-input";
-import ProductCard from "@/components/ui/product-card";
+import ProductCard, { Product } from "@/components/ui/product-card";
 
-export default function Home() {
+export default async function Home() {
+  const data: Product[] = await (
+    await fetch("http://localhost:5000/get-homepage-products")
+  ).json();
+
   return (
     <>
       <main className="max-w-7xl mt-14 mx-auto">
@@ -51,10 +55,10 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-10">
             <div className="relative border border-gray-400 w-[366px] h-[376px]">
-              <Image src={img} fill className="object-cover" alt="product" />
+              <Image unoptimized src={data[0].images[0]} fill className="object-cover" alt="product" />
             </div>
             <div className="relative border border-gray-400 w-[366px] h-[376px]">
-              <Image src={img} fill className="object-cover" alt="product" />
+              <Image unoptimized src={data[1].images[0]} fill className="object-cover" alt="product" />
             </div>
           </div>
         </section>
@@ -129,24 +133,11 @@ export default function Home() {
           <Carousel>
             <span className="absolute right-0 -top-10">See All</span>
             <CarouselContent>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
-              <CarouselItem className="basis-1/4">
-                <ProductCard img={img} />
-              </CarouselItem>
+              {data.map((d, idx) => (
+                <CarouselItem key={idx} className="basis-1/4">
+                  <ProductCard product={d} />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="max-w-max mx-auto mt-6 flex gap-3 items-center">
               <CarouselPrevious className="  text-gray-500 border-gray-400 border-2" />

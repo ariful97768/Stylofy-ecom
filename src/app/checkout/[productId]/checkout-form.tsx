@@ -47,7 +47,7 @@ export default function CheckoutForm({ product }: { product: Product }) {
 
       await toast
         .promise(
-          fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/confirm-order`, {
+          fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/confirm-order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

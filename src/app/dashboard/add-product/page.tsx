@@ -111,7 +111,7 @@ export default function AddProduct() {
 
       const dataRes = await toast
         .promise(
-          fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/add-product`, {
+          fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/add-product`, {
             credentials: "include",
             method: "POST",
             headers: {

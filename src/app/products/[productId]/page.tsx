@@ -13,7 +13,7 @@ export default async function ProductDetails({
 
   const id = await params;
   const product: Product = await (
-    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/get-product/${id.productId}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/get-product/${id.productId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

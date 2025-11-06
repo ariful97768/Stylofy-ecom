@@ -24,7 +24,7 @@ export default function Orders() {
     if (!context?.user?.email) return;
     async function fetchData(email: string) {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/get-orders/${email}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/get-orders/${email}`, {
           method: "GET",
           credentials: "include",
         });
@@ -43,7 +43,7 @@ export default function Orders() {
 
   async function handleCancel(id: string) {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/delete-order/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/delete-order/${id}`, {
         credentials: "include",
         method: "DELETE",
       });

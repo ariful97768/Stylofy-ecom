@@ -31,19 +31,45 @@ export default function LoginPage() {
   async function handleLogin() {
     try {
       const user = await context?.signInWithGoogle();
-      await (
-        await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/sign-token`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: user?.user.email,
-          }),
-          credentials: "include",
-        })
-      ).json();
-      console.log(user);
+      console.log(
+        user?.user.displayName,
+        user?.user.email,
+        user?.user.photoURL
+      );
+      if (!user?.user) {
+        throw new Error("Sign in failed");
+      }
+      const userData = {
+        name: user?.user.displayName,
+        email: user?.user.email,
+        image: user?.user.photoURL,
+        provider: "google",
+      };
+
+      await Promise.all([
+        await (
+          await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/sign-token`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: user?.user.email,
+            }),
+            credentials: "include",
+          })
+        ).json(),
+        await (
+          await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/sign-user`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+            credentials: "include",
+          })
+        ).json(),
+      ]);
 
       swal.fire({
         text: "Signed in Successfully",

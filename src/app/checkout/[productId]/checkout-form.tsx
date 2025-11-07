@@ -66,7 +66,9 @@ export default function CheckoutForm({ product }: { product: Product }) {
         .unwrap();
       form.reset();
     } catch (error) {
-      toast.error("Could not confirm the order");
+      const msg =
+        error instanceof Error ? error.message : "Could not confirm the order";
+      toast.error(msg);
       console.log(error);
     } finally {
       setLoading(false);

@@ -26,6 +26,7 @@ export default function CheckoutForm({ product }: { product: Product }) {
     try {
       const orderInfo = {
         user: auth.currentUser?.email,
+        payment: data.payment,
         product: product._id,
         discount: product.discount,
         quantity: 1,

@@ -15,6 +15,7 @@ import { FormEvent, RefObject, useRef, useState } from "react";
 import { Label } from "@/components/ui/label";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
+import { auth } from "@/firebase.config";
 
 export interface ImgType {
   img1: File | null;
@@ -107,6 +108,7 @@ export default function AddProduct() {
         discount: formData.discount,
         category: formData.category,
         images: imgUrl,
+        seller: auth.currentUser?.email,
       };
 
       const dataRes = await toast

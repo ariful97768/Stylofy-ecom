@@ -155,8 +155,9 @@ export default function AddProduct() {
     }
   }
   return (
-    <form onSubmit={submit} className="max-w-5xl w-full mx-auto">
-      <div className="pt-10 relative w-full">
+    <form onSubmit={submit} className="max-w-6xl p-5 rounded-md bg-white/50 w-full mx-auto">
+      <h1 className="text-2xl mb-8 font-semibold">Add product</h1>
+      <div className="relative w-full">
         <div className="flex mb-5 gap-5">
           <div className="w-full space-y-3">
             <div className="flex flex-col gap-2">

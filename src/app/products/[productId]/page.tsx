@@ -9,17 +9,20 @@ export default async function ProductDetails({
   params: Promise<{ productId: string }>;
 }) {
   const cookieStore = await cookies();
-  const token = cookieStore.get("token");
+  const token = cookieStore.get("token")?.value;
 
   const id = await params;
   const product: Product = await (
-    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/get-product/${id.productId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: `token=${token}`,
-      },
-    })
+    await fetch(
+      `${process.env.NEXT_PUBLIC_CLIENT_URL}/get-product/${id.productId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `token=${token}`,
+        },
+      }
+    )
   ).json();
   console.log(product);
   return (

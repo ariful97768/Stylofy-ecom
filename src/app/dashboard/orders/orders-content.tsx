@@ -24,17 +24,22 @@ export default function Orders() {
     if (!context?.user?.email) return;
     async function fetchData(email: string) {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/get-orders/${email}`, {
-          method: "GET",
-          credentials: "include",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_CLIENT_URL}/get-orders/${email}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
         if (!res.ok) throw new Error("Unable to fetch data");
         const data = await res.json();
         setData(data);
       } catch (error) {
+        const msg =
+          error instanceof Error ? error.message : "Unable to fetch data";
         Swal.fire({
           icon: "error",
-          text: "Unable to fetch data",
+          text: msg,
         });
       }
     }
@@ -43,10 +48,13 @@ export default function Orders() {
 
   async function handleCancel(id: string) {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/delete-order/${id}`, {
-        credentials: "include",
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_CLIENT_URL}/delete-order/${id}`,
+        {
+          credentials: "include",
+          method: "DELETE",
+        }
+      );
       if (!res.ok) throw new Error("Could not cancel your order");
 
       const remaining = data.filter((d) => d._id !== id);

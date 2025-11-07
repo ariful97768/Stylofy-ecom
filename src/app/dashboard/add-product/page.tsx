@@ -145,8 +145,9 @@ export default function AddProduct() {
 
       console.log(res);
     } catch (error) {
-      console.log(error);
-      toast.error("Some unknown error happened");
+      const msg =
+        error instanceof Error ? error.message : "Some unknown error happened";
+      toast.error(msg);
     } finally {
       setPending(false);
     }

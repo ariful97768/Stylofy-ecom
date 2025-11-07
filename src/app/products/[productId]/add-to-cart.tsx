@@ -29,7 +29,11 @@ export default function AddToCart({ id }: { id: string }) {
       setSuccess(true);
     } catch (error) {
       setSuccess(false);
-      toast.error("Could not add to cart");
+       const msg =
+        error instanceof Error
+          ? error.message
+          :"Could not add to cart"
+      toast.error(msg);
     } finally {
       setloading(false);
     }

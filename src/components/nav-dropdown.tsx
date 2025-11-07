@@ -25,11 +25,19 @@ export function NavMenu() {
         })
       ).json();
 
-      await context?.signOutUser();
-      context?.setUser(null);
       Swal.fire({
-        text: "Signed out successfully",
-        icon: "success",
+        text: "Confirm signout",
+        icon: "question",
+        showCancelButton: true,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await context?.signOutUser();
+          context?.setUser(null);
+          Swal.fire({
+            text: "Signed out successfully",
+            icon: "success",
+          });
+        }
       });
     } catch (error) {
       const msg =
@@ -57,7 +65,7 @@ export function NavMenu() {
         </Link>
         {context?.user ? (
           <>
-            <Link href={"/dashboard/orders"}>
+            <Link href={"/dashboard/my-orders"}>
               <DropdownMenuItem>Orders</DropdownMenuItem>
             </Link>
             <DropdownMenuItem onClick={logout} variant="destructive">

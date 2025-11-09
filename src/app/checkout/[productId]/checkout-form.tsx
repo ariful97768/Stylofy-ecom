@@ -34,7 +34,7 @@ export default function CheckoutForm({ product }: { product: Product }) {
           product.price -
           (product.price / 100) * product.discount
         ).toFixed(2),
-        shipping: 70,
+        shippingFee: 70,
         userInfo: {
           name: data.name,
           email: data.email,

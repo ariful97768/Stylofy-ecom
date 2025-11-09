@@ -83,7 +83,7 @@ export default function Orders() {
         </div>
       ) : (
         <>
-          <h1 className="text-2xl mb-8 font-semibold">Total orders</h1>
+          <h1 className="text-2xl mb-8 font-semibold">My orders</h1>
           <table className="table-fixed min-w-[900px] text-sm w-full border-collapse">
             <thead>
               <tr className="bg-gray-100">
@@ -121,7 +121,7 @@ export default function Orders() {
                   style={{ width: "10%" }}
                   className="border px-4 py-2 text-left"
                 >
-                  Status
+                  Delivery
                 </th>
                 <th
                   style={{ width: "9%" }}
@@ -134,7 +134,7 @@ export default function Orders() {
                   className="border px-4 py-2 text-left"
                 >
                   Placed
-                </th> 
+                </th>
                 <th
                   style={{ width: "9%" }}
                   className="border px-4 py-2 text-left"
@@ -174,7 +174,9 @@ export default function Orders() {
                   <td className="border px-4 py-2">
                     {new Date(d.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="border px-4 py-2">{(d.payment).toString().toUpperCase()  }</td>
+                  <td className="border px-4 py-2">
+                    {d.payment.toString().toUpperCase()}
+                  </td>
                   <td className="border px-4 py-2">
                     <span
                       onClick={() => handleCancel(d._id)}
